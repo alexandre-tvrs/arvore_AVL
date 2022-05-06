@@ -9,17 +9,11 @@ int main()
 
     raiz = cria_arvAVL();
 
-    /*
+
 
     x = insere_arvAVL(raiz, 150);
-    x = insere_arvAVL(raiz, 110);
-    x = insere_arvAVL(raiz, 100);
-    x = insere_arvAVL(raiz, 130);
-    x = insere_arvAVL(raiz, 120);
-    x = insere_arvAVL(raiz, 140);
-    x = insere_arvAVL(raiz, 160);
+    x = remove_arvAVL(raiz, 150);
 
-    */
 
     if(vazia_arvAVL(raiz)){
         printf("A arvore esta vazia.");

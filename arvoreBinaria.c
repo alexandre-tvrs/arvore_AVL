@@ -23,7 +23,7 @@ void liberar_arvAVL(arvAVL *raiz){
     }
     libera_NO(*raiz);
     free(raiz);
-}
+};
 
 void libera_NO(struct NO *no){
     if (no == NULL){
@@ -76,7 +76,6 @@ void rotacaoLL(arvAVL *raiz){
     (*raiz) = no;
 };
 
-int insere_arvAVL()
 
 void rotacaoRR(arvAVL *raiz){
     struct NO *no;
@@ -112,6 +111,120 @@ int altura_arvAVL(arvAVL *raiz){
     }else{
         return(alt_dir + 1);
     }
+};
+
+struct NO *procuramenor(struct NO *atual){
+    struct NO *no1 = atual;
+    struct NO *no2 = atual->esq;
+    while(no2 != NULL){
+        no1 = no2;
+        no2 = no2->esq;
+    }
+    return no1;
+};
+
+int insere_arvAVL(arvAVL *raiz, int valor){
+    int res;
+    if(*raiz == NULL){
+        struct NO *novo;
+        novo = (struct NO*) malloc(sizeof(struct NO));
+        if (novo == NULL){
+            return 0;
+        }
+        novo->info = valor;
+        novo->alt = 0;
+        novo->dir = NULL;
+        novo->esq = NULL;
+        *raiz = novo;
+        return 1;
+    }
+    struct NO *atual = *raiz;
+    if(valor < atual->info){
+        if((res = insere_arvAVL(&(atual->esq), valor)) == 1){
+            if(fatorBalanceamento_NO(atual) >= 2){
+                rotacaoLL(raiz);
+            }else {
+                rotacaoLR(raiz);
+            }
+        }
+    }
+    else{
+        if(valor > atual->info){
+            if((res = insere_arvAVL(&(atual->dir), valor)) == 1){
+                if(fatorBalanceamento_NO(atual) >=2){
+                    if((*raiz)->dir->info < valor){
+                        rotacaoRR(raiz);
+                    }else{
+                        rotacaoRL(raiz);
+                    }
+                }
+            }
+        }else{
+            printf("Valor duplicado!\n");
+            return 0;
+        }
+    }
+    atual->alt = maior(alt_no(atual->esq), alt_no(atual->dir)) + 1;
+    return res;
+};
+
+int remove_arvAVL(arvAVL *raiz, int valor){
+    if(*raiz == NULL){
+        return 0;
+    }
+    int res;
+    if(valor < (*raiz)->info){
+        if((res = remove_arvAVL(&(*raiz)->esq, valor)) == 1){
+            if(fatorBalanceamento_NO(*raiz) >= 2){
+                if(alt_no((*raiz)->dir->esq) <= alt_no((*raiz)->dir->dir)){
+                    rotacaoRR(raiz);
+                }else{
+                    rotacaoRL(raiz);
+                }
+            }
+        }
+    }
+    if((*raiz)->info < valor){
+        if((res = remove_arvAVL(&(*raiz)->dir, valor)) == 1){
+            if(fatorBalanceamento_NO(*raiz) >= 2){
+                if(alt_no((*raiz)->esq->dir) <= alt_no((*raiz)->esq->esq)){
+                    rotacaoLL(raiz);
+                }else{
+                    rotacaoLR(raiz);
+                }
+            }
+        }
+    }
+    if((*raiz)->info == valor){
+        if(((*raiz)->esq == NULL) || (*raiz)->dir == NULL){
+            struct NO *no_velho = (*raiz);
+            if((*raiz)->esq != NULL){
+                *raiz = (*raiz)->esq;
+            }else{
+                *raiz = (*raiz)->dir;
+            }
+            free(no_velho);
+        }else{
+            struct NO *temp = procuramenor((*raiz)->dir);
+            (*raiz)->info = temp->info;
+            remove_arvAVL((*raiz)->dir, (*raiz)->info);
+            if(fatorBalanceamento_NO(*raiz) >= 2){
+                if(alt_no((*raiz)->esq->dir) <= alt_no((*raiz)->esq->esq)){
+                    rotacaoLL(raiz);
+                }else{
+                    rotacaoLR(raiz);
+                }
+            }
+        }
+        if(*raiz != NULL){
+            (*raiz)->alt = maior(alt_no((*raiz)->esq), alt_no((*raiz)->dir)) + 1;
+        }
+        return 1;
+    }
+    if(*raiz != NULL){
+        (*raiz)->alt = maior(alt_no((*raiz)->esq), alt_no((*raiz)->dir)) + 1;
+    }
+    return res;
 };
 
 int totalNO_arvAVL(arvAVL *raiz){

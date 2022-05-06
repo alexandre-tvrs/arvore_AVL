@@ -24,6 +24,12 @@ void rotacaoRL(arvAVL *raiz);
 
 int altura_arvAVL(arvAVL *raiz);
 
+struct NO *procuramenor(struct NO *atual);
+
+int insere_arvAVL(arvAVL *raiz, int valor);
+
+int remove_arvAVL(arvAVL *raiz, int valor);
+
 int totalNO_arvAVL(arvAVL *raiz);
 
 void preOrdem_arvAVL(arvAVL *raiz);

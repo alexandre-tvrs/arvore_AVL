@@ -11,10 +11,15 @@
 	<stdlib.h>
 	"arvoreBinaria.h"
 
-1651273814 source:c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\main.c
+1651878017 source:c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\main.c
 	<stdio.h>
 	<stdlib.h>
 	"arvoreBinaria.h"
 
-1651278609 c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\arvorebinaria.h
+1651877988 c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\arvorebinaria.h
+
+1651878091 source:c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\arvorebinaria.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreBinaria.h"
 
