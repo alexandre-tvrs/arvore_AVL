@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1649446532 source:e:\documents\ifsp\3º semestre\estrutura de dados ii\04.01\arvorebinaria\arvorebinaria.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreBinaria.h"
+
+1649446517 e:\documents\ifsp\3º semestre\estrutura de dados ii\04.01\arvorebinaria\arvorebinaria.h
+
+1649446570 source:e:\documents\ifsp\3º semestre\estrutura de dados ii\04.01\arvorebinaria\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreBinaria.h"
+
+1651273814 source:c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arvoreBinaria.h"
+
+1651278609 c:\users\alexandre\documents\ifsp\estrutura de dados ii\arvoreavl\arvorebinaria.h
+
